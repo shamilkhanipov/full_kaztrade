@@ -1,0 +1,102 @@
+.banner{
+    background-image: url("../../assets/img/hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+}
+
+.banner_info{
+    padding: 100px 0;
+}
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.banner_info>span{
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #64748B;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.3;
+
+    margin-bottom: 10px;
+}
+
+.banner_info>span::before{
+    content: "";
+    display: inline-block;
+    margin-right: 5px;
+    background-image: url("../../assets/icons/krug.svg");
+    width: 10px;
+    height: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner h1{
+    line-height: 58px;
+    font-size: 48px;
+    font-weight: 800;
+    max-width: 700px;
+    letter-spacing: -1.2;
+
+    margin-bottom: 20px;
+}
+
+.banner p{
+    font-size: 18px;
+    color: #fff;
+    max-width: 500px;
+
+    margin-bottom: 50px;
+}
+
+.banner_info_btn{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.banner_info_btn a {
+    padding: 14px 32px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.35;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: bold;
+    /* semibold */
+}
+
+.price{
+    background-color: #1C2B4A;
+}
+
+.banner_info_btn .support {
+    background-color: #fff;
+    color: #374151;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.banner_info_btn .support::after{
+    content: "";
+    display: inline-block;
+    margin-left: 10px;
+    background-image: url("../../assets/icons/max.svg");
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
