@@ -1,32 +1,34 @@
 import styles from "./Process.module.css"
+import Image from "next/image"
 
-export default function Process (){
+export default function Process(){
     return (
         <section id="process" className={styles.container}>
-            <div className={styles.description}>
-                <h2>Регламент работы</h2>
-                <p>Прозрачный процесс исполнения заказа от заявки до передачи ключей.</p>
+            <div className={styles.inner}>
+                <div className={styles.description}>
+                    <h2>Регламент работы</h2>
+                    <p>Прозрачный процесс исполнения заказа от заявки до передачи ключей.</p>
+                </div>
+                <div className={styles.steps}>
+                    <ul>
+                        {stepsDesc.map((step) => (
+                            <li key={step.id} style={{backgroundColor: step.bgColor}}>
+                                <div className={styles.process_img}>
+                                    <Image src={step.img} alt={step.title} width={40} height={40}/>
+                                    <span style={{color: step.numColor}}>{step.number}</span>
+                                </div>
+                                <div className={styles.info}>
+                                    <span className={styles.info_title}>{step.title}</span>
+                                    <p className={styles.info_desc}>{step.description}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div className={styles.steps}>
-                <ul className={styles.first}>
-                    {stepsDesc.map((step) => (
-                        <li key={step.id} style={{backgroundColor: step.bgColor}}>
-                            <div className={styles.process_img}>
-                                <img src={step.img} alt="" />
-                                <span style={{color: step.numColor}}>{step.number}</span>
-                            </div>
-                            <div className={styles.info}>
-                                <span className={styles.info_title}>{step.title}</span>
-                                <p className={styles.info_desc}>{step.description}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>  
         </section>
     )
 }
-
 
 const stepsDesc = [ 
     {
@@ -65,7 +67,7 @@ const stepsDesc = [
         bgColor: "#D9E0ED",
         numColor: "#fff"
     },
-   {
+    {
         id:5,
         number: "05",
         title: "Выкуп авто",
@@ -94,7 +96,7 @@ const stepsDesc = [
     },
     {
         id:8,
-        number: "8",
+        number: "08",
         title: "Передача и поддержка",
         description: "Вы получаете авто. Помогаем с постановкой на учет и отвечаем на вопросы.",
         img: "/process/8step.svg",

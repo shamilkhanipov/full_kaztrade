@@ -8,7 +8,7 @@ export default function Cars(){
             <ul className={styles.carList}>
             {carList.map((car) => (
                 <li className={styles.car_card} key={car.id}>
-                    <img src={car.img} width={388} alt={car.model} />
+                    <img src={car.img} className={styles.car_img} alt={car.model} />
                     <div className={styles.car_info}>
                         <div className={styles.info_title}>
                             <p>{car.model}</p>

@@ -1,40 +1,68 @@
 .advantages{
-    border-bottom: 1px solid #E5E7EB;
-}
-
-.advantages_list{
-    padding-top: 50px;
-
-    display: flex;
-    gap: 130px;
-
-    padding-bottom: 50px;
+    border-bottom:1px solid #E5E7EB;
 }
 
 .container{
-    width: 1200px;
-    margin: 0 auto;
+    max-width:1200px;
+    width:100%;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+.advantages_list{
+    padding:50px 0;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
 }
 
 .advantages_list li{
-     font-size: 12px;
-     line-height: 16px;
-     font-weight: 600;
-     color: #6B7280;
-     text-transform: uppercase;
+    font-size:12px;
+    line-height:16px;
+    font-weight:600;
+    color:#6B7280;
+    text-transform:uppercase;
 
-     letter-spacing: 0.6;
-     max-width: 300px;
+    letter-spacing:0.6px;
+    max-width:300px;
 }
 
-.advantages_list>li>span{
-    display: block;
-    font-size: 30px;
-    line-height: 36px;
-    letter-spacing: -0.75;
-    color: #111827;
-    text-transform: none;
+.advantages_list li span{
+    display:block;
+    font-size:30px;
+    line-height:36px;
+    letter-spacing:-0.75px;
+    color:#111827;
+    text-transform:none;
 
-    margin-bottom: 5px;
+    margin-bottom:5px;
 }
 
+@media (max-width:1024px){
+.advantages_list{
+    grid-template-columns:repeat(2,1fr);
+    gap:40px 60px;
+}
+}
+
+@media (max-width:640px){
+    .advantages_list{
+        gap:30px;
+        margin: 0 auto;
+    }
+    .advantages_list li{
+        display: inline-block;
+    }
+    .advantages_list li span{
+        font-size:26px;
+    }
+}
+
+@media (max-width: 450px) {
+    .advantages_list{
+        display: flex;
+        flex-wrap: wrap;
+        gap:30px;
+    }
+}

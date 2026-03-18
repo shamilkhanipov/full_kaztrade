@@ -101,106 +101,110 @@ export default function Calculate(){
 
     return(
         <section id="calculate" className={styles.container}>
-            <div className={styles.info}>
-                <h2>Калькулятор ввоза</h2>
-                <p className={styles.info_desc}>Оцените предварительную стоимость ввоза автомобиля
-                в режиме конструктора, включая все ключевые
-                расходы: от аукциона до сборки.</p>
-                <ul className={styles.list_tutorial}>
-                    {calTutoroial.map((step)=>(
-                        <li key={step.id}>
-                            <p className={styles.title}>{step.title}</p>
-                            <p className={styles.desc}>{step.desc}</p>
-                        </li>
-                    ))}
-                </ul>
-                <p className={styles.dop}>* Расчет является предварительным и может меняться в зависимости
-от текущего курса валют.</p>
-            </div>
-            <div className={styles.calculate_card}>
-                <div className={styles.row}>
-                    <fieldset className={styles.column}>
-                        <label className={styles.label_card} htmlFor="price">Стоимость автомобиля (₽)</label>
-                        <input 
-                            className={styles.input_card} 
-                            id="price" 
-                            name="price" 
-                            type="text" 
-                            placeholder="Например: 2 000 000" 
-                            value={formatNumber(form.price)} 
-                            onChange={handlePriceChange}
-                        />
-                    </fieldset>
-                    <fieldset className={styles.column}>
-                        <label className={styles.label_card} htmlFor="type">Тип кузова</label>
-                        <select className={styles.input_card} name="type" id="type" value={form.type} onChange={handleChange}>
-                            <option value="Sedan">Седан, хэтчбек, универсал</option>
-                            <option value="Krossover">Кроссовер</option>
-                            <option value="Bus">Микроавтобус</option>
-                        </select>
-                    </fieldset>
-                </div>
-                    <div className={styles.row}>
-                        <fieldset className={styles.column}>
-                            <label className={styles.label_card} htmlFor="volume">Объем двигателя</label>
-                            <select className={styles.input_card} id="volume" name="volume" value={form.volume} onChange={handleChange}>
-                                <option value="to1500">до 1500 см³</option>
-                                <option value="from1500_to2000">1500 см³ - 2000 см³</option>
-                                <option value="from2500_to3000">2000 см³ - 3000 см³</option>
-                                <option value="from3000_to">от 3000 см³</option>
-                            </select>
-                        </fieldset>
-                        <fieldset className={styles.column}>
-                            <div className={styles.check}>
-                                <input className={styles.check_custom} type="checkbox" id="check" name="assembly" checked={form.assembly} onChange={handleChange}/>
-                                <label className={`${styles.label_card} ${styles.checkbox_label}`} htmlFor="check">Включить стоимость сборки</label>
-                            </div>
-                        </fieldset>
+            <div className={styles.inner}>
+                <div className={styles.content}>
+                    <div className={styles.info}>
+                        <h2>Калькулятор ввоза</h2>
+                        <p className={styles.info_desc}>Оцените предварительную стоимость ввоза автомобиля
+                        в режиме конструктора, включая все ключевые
+                        расходы: от аукциона до сборки.</p>
+                        <ul className={styles.list_tutorial}>
+                            {calTutoroial.map((step)=>(
+                                <li key={step.id}>
+                                    <p className={styles.title}>{step.title}</p>
+                                    <p className={styles.desc}>{step.desc}</p>
+                                </li>
+                            ))}
+                        </ul>
+                        <p className={styles.dop}>* Расчет является предварительным и может меняться в зависимости
+        от текущего курса валют.</p>
                     </div>
-                <button 
-                    onClick={handleCalculate} 
-                    disabled={!form.price || Number(form.price) <= 0}
-                >
-                    Рассчитать стоимость
-                </button>
-                {showResult && result && Number(form.price) > 0 && (
-                    <div className={styles.calculate_output}>
-                        <h3>Из чего складывается стоимость</h3>
-                        <div className={styles.calculate_output__info}>
-                            <dl>
-                                <dt>Стоимость автомобиля</dt>
-                                <dd>{result.price.toLocaleString()} ₽</dd>
-                            </dl>
-                            <dl>
-                                <dt>Аукционный сбор и расходы: </dt>
-                                <dd>{result.auction.toLocaleString()} ₽</dd>
-                            </dl>
-                            <dl>
-                                <dt>Логистика:</dt>
-                                <dd>{result.logistic.toLocaleString()} ₽</dd>
-                            </dl>
-                            <dl>
-                                <dt>Таможенное оформление:</dt>
-                                <dd>{result.customs.toLocaleString()} ₽</dd>
-                            </dl>
-                            <dl>
-                                <dt>Комиссия компании: </dt>
-                                <dd>{result.commission.toLocaleString()} ₽</dd>
-                            </dl>
-                            {result.assembly>0 && <dl>
-                                <dt>Сборка:</dt>
-                                <dd> {result.assembly.toLocaleString()} ₽</dd>
-                            </dl>}
-
-                            <div className={styles.total_price}>
-                                <dl>
-                                    <dt>Итоговая стоимость под ключ: </dt>
-                                    <dd>{result.total.toLocaleString()} ₽</dd>
-                                </dl>
-                            </div>
+                    <div className={styles.calculate_card}>
+                        <div className={styles.row}>
+                            <fieldset className={styles.column}>
+                                <label className={styles.label_card} htmlFor="price">Стоимость автомобиля (₽)</label>
+                                <input 
+                                    className={styles.input_card} 
+                                    id="price" 
+                                    name="price" 
+                                    type="text" 
+                                    placeholder="Например: 2 000 000" 
+                                    value={formatNumber(form.price)} 
+                                    onChange={handlePriceChange}
+                                />
+                            </fieldset>
+                            <fieldset className={styles.column}>
+                                <label className={styles.label_card} htmlFor="type">Тип кузова</label>
+                                <select className={styles.input_card} name="type" id="type" value={form.type} onChange={handleChange}>
+                                    <option value="Sedan">Седан, хэтчбек, универсал</option>
+                                    <option value="Krossover">Кроссовер</option>
+                                    <option value="Bus">Микроавтобус</option>
+                                </select>
+                            </fieldset>
                         </div>
+                        <div className={styles.row}>
+                            <fieldset className={styles.column}>
+                                <label className={styles.label_card} htmlFor="volume">Объем двигателя</label>
+                                <select className={styles.input_card} id="volume" name="volume" value={form.volume} onChange={handleChange}>
+                                    <option value="to1500">до 1500 см³</option>
+                                    <option value="from1500_to2000">1500 см³ - 2000 см³</option>
+                                    <option value="from2500_to3000">2000 см³ - 3000 см³</option>
+                                    <option value="from3000_to">от 3000 см³</option>
+                                </select>
+                            </fieldset>
+                            <fieldset className={styles.column}>
+                                <div className={styles.check}>
+                                    <input className={styles.check_custom} type="checkbox" id="check" name="assembly" checked={form.assembly} onChange={handleChange}/>
+                                    <label className={`${styles.label_card} ${styles.checkbox_label}`} htmlFor="check">Включить стоимость сборки</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <button 
+                            onClick={handleCalculate} 
+                            disabled={!form.price || Number(form.price) <= 0}
+                        >
+                            Рассчитать стоимость
+                        </button>
+                        {showResult && result && Number(form.price) > 0 && (
+                            <div className={styles.calculate_output}>
+                                <h3>Из чего складывается стоимость</h3>
+                                <div className={styles.calculate_output__info}>
+                                    <dl>
+                                        <dt>Стоимость автомобиля</dt>
+                                        <dd>{result.price.toLocaleString()} ₽</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Аукционный сбор и расходы: </dt>
+                                        <dd>{result.auction.toLocaleString()} ₽</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Логистика:</dt>
+                                        <dd>{result.logistic.toLocaleString()} ₽</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Таможенное оформление:</dt>
+                                        <dd>{result.customs.toLocaleString()} ₽</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Комиссия компании: </dt>
+                                        <dd>{result.commission.toLocaleString()} ₽</dd>
+                                    </dl>
+                                    {result.assembly>0 && <dl>
+                                        <dt>Сборка:</dt>
+                                        <dd> {result.assembly.toLocaleString()} ₽</dd>
+                                    </dl>}
+
+                                    <div className={styles.total_price}>
+                                        <dl>
+                                            <dt>Итоговая стоимость под ключ: </dt>
+                                            <dd>{result.total.toLocaleString()} ₽</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                )}
+                </div>
             </div>
         </section>
     )
@@ -211,18 +215,15 @@ const calTutoroial =[
         id:1,
         title: "Введите стоимость автомобиля",
         desc: "Укажите цену покупки на аукционе (или желаемую)",
-        list_style: "./list_style/one.svg"
     },
     {
         id:2,
         title: "Укажите параметры авто",
         desc: "Тип кузова и необходимость сборки",
-        list_style: "./list_style/two.svg"
     },
     {
         id:3,
         title: "Получите расчет",
         desc: "Полная детализация расходов «под ключ»",
-        list_style: "./list_style/three.svg"
     }
 ]

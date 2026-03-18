@@ -1,44 +1,65 @@
-.container{
+.container {
     width: 1200px;
     margin: 0 auto;
-
     margin-top: 150px;
     padding-bottom: 80px;
 }
 
-.contact_list{
+.container h2 {
+    font-size: 30px;
+    line-height: 32px;
+    color: #111827;
+    font-weight: bold;
+}
+
+.contact_list {
     margin-top: 60px;
     display: flex;
     gap: 60px;
 }
 
-.contact_list li{
+.contact_list li {
+    flex: 1;
     border: 1px solid #9CA3AF;
     border-radius: 6px;
+    overflow: hidden;
 }
 
-.contact_info{
-    display: flex;
-    padding: 25px 30px;
-}
-
-.contact_info span{
+.contact_list li iframe {
+    width: 100%;
+    height: 300px;
     display: block;
 }
 
-.title{
-    font-size: 20px;
-    line-height: 28px;
+.contact_info {
+    display: flex;
+    padding: 25px 30px;
+    align-items: flex-start;
 }
 
-.subtitle{
+.contact_info span {
+    display: block;
+}
+
+.text {
+    flex: 1;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.subtitle {
     font-size: 18px;
     line-height: 22px;
     color: #292929;
     margin-top: 3px;
 }
 
-.subtitle::before{
+.subtitle::before {
     content: "";
     background-image: url("../../assets/icons/map.svg");
     display: inline-block;
@@ -48,11 +69,213 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    vertical-align: middle;
 }
 
-.number{
+.number {
     margin-left: auto;
     font-size: 20px;
     font-weight: bold;
     line-height: 28px;
+    color: #111827;
+    white-space: nowrap;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+        padding: 0 32px 80px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0 24px 60px;
+        margin-top: 120px;
+    }
+    
+    .container h2 {
+        font-size: 28px;
+    }
+    
+    .contact_list {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 50px;
+    }
+    
+    .contact_list li iframe {
+        height: 280px;
+    }
+    
+    .contact_info {
+        padding: 22px 25px;
+    }
+    
+    .title {
+        font-size: 19px;
+        line-height: 26px;
+    }
+    
+    .subtitle {
+        font-size: 17px;
+        line-height: 20px;
+    }
+    
+    .number {
+        font-size: 19px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px 50px;
+        margin-top: 100px;
+    }
+    
+    .container h2 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    
+    .contact_list {
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .contact_list li iframe {
+        height: 250px;
+    }
+    
+    .contact_info {
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .text {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .subtitle::before {
+        width: 15px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    
+    .number {
+        margin-left: 0;
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+        padding-top: 15px;
+        border-top: 1px solid #E5E7EB;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 16px 40px;
+        margin-top: 80px;
+    }
+    
+    .container h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .contact_list {
+        gap: 25px;
+        margin-top: 30px;
+    }
+    
+    .contact_list li iframe {
+        height: 220px;
+    }
+    
+    .contact_info {
+        padding: 18px;
+    }
+    
+    .title {
+        font-size: 17px;
+        line-height: 22px;
+    }
+    
+    .subtitle {
+        font-size: 15px;
+        line-height: 17px;
+    }
+    
+    .subtitle::before {
+        width: 14px;
+        height: 18px;
+        margin-right: 6px;
+    }
+    
+    .number {
+        font-size: 17px;
+        line-height: 22px;
+        padding-top: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 0 12px 30px;
+        margin-top: 60px;
+    }
+    
+    .container h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .contact_list {
+        gap: 20px;
+    }
+    
+    .contact_list li iframe {
+        height: 200px;
+    }
+    
+    .contact_info {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    
+    .subtitle::before {
+        width: 12px;
+        height: 16px;
+        margin-right: 5px;
+    }
+    
+    .number {
+        font-size: 16px;
+        line-height: 20px;
+        padding-top: 10px;
+    }
 }

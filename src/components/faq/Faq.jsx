@@ -1,26 +1,34 @@
+"use client";
+
 import styles from "./Faq.module.css";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function FAQ() {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(null);
 
   return (
     <section id="FAQ" className={styles.container}>
-      <h2>Частые вопросы</h2>
-      {FAQInfo.map((item) => (
-        <div key={item.id} className={selected===item.id ? styles.active_item : styles.faq_item}> 
-          <div className={selected===item.id ? styles.active : styles.item_question} onClick={()=> setSelected(item.id)} >
-            <p>{item.question}</p>
-          </div>
-          <div className={styles.item_answer}>
-            {
-              selected === item.id &&(
+      <div className={styles.inner}>
+        <h2>Частые вопросы</h2>
+        {FAQInfo.map((item) => (
+          <div 
+            key={item.id} 
+            className={selected === item.id ? styles.active_item : styles.faq_item}
+          >
+            <div 
+              className={selected === item.id ? styles.active : styles.item_question}
+              onClick={() => setSelected(selected === item.id ? null : item.id)}
+            >
+              <p>{item.question}</p>
+            </div>
+            <div className={styles.item_answer}>
+              {selected === item.id && (
                 <p>{item.answer}</p>
-              )
-            }
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   )
 }
